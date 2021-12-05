@@ -55,7 +55,7 @@ def main():  # main function
             st.write(summary_data)
 
         with predicted:
-            st.markdown('**Predicted Result**')
+            st.markdown('**Prediction Result**')
 
             # show the predicted result
             st.write(f'Predicted Cancer Type : **{result}**')
