@@ -1,5 +1,5 @@
 import streamlit as st
-from helper import load_model, to_dataframe, data_preprocessing, get_prediction
+from helper import get_summary, load_model, to_dataframe, data_preprocessing, get_prediction
 
 st.set_page_config(layout="wide")
 
@@ -42,9 +42,6 @@ def main():  # main function
         # preprocess the data
         data_prep = data_preprocessing(cancer_data, bsm_scaler)
 
-        # get the data summary
-        swap_data = cancer_data.T
-
         # get prediction result
         result = get_prediction(data_prep, classifier)
 
@@ -52,13 +49,15 @@ def main():  # main function
         summary, predicted = st.columns([1, 2])
         with summary:
             st.markdown('**Prediction Summary**')
-            swap_data.reset_index(inplace=True)
-            swap_data = swap_data.rename(
-                {'index': 'features', 0: 'data_input'}, axis=1)
-            st.write(swap_data)
+
+            # show data summary
+            summary_data = get_summary(cancer_data)
+            st.write(summary_data)
 
         with predicted:
             st.markdown('**Predicted Result**')
+
+            # show the predicted result
             st.write(f'Predicted Cancer Type : **{result}**')
 
 

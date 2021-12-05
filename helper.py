@@ -61,3 +61,22 @@ def get_prediction(data_prep, classifier):
         result = 'Malignant'
 
     return result
+
+
+def get_summary(data):
+    data_summary = data.copy()
+    data_summary = data_summary.rename({'clump_thickness': 'Clump Thickness',
+                                        'uniformity_of_cell_size': 'Uniformity of Cell Size',
+                                        'uniformity_of_cell_shape': 'Uniformity of Cell Shape',
+                                        'marginal_adhesion': 'Marginal Adhesion',
+                                        'single_epithelial_cell_size': 'Single Epithelial Cell Size',
+                                        'bare_nuclei': 'Bare Nuclei',
+                                        'bland_chromatin': 'Bland Chromatin',
+                                        'normal_nucleoli': 'Normal Nucleoli',
+                                        'mitoses': 'Mitoses'}, axis=1)
+    data_summary = data_summary.T
+    data_summary.reset_index(inplace=True)
+    data_summary = data_summary.rename(
+        {'index': 'Features', 0: 'Data Input'}, axis=1)
+
+    return data_summary
