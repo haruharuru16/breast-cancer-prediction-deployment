@@ -12,9 +12,8 @@ Project Deployment: [Breast Cancer Prediction Using Random Forest Algorithm](htt
 2. Fathia Dwi Astuti 
 3. Windu Wulandari  
 
-**Advisors:**
-1. Dr. Widodo, S.Kom., M.Kom.
-2. Irma Permata Sari, S.Pd., M.Eng.
+**Advisor:**
+Dr. Widodo, S.Kom., M.Kom.
 <hr>
 
 ## About the Project
