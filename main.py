@@ -1,3 +1,4 @@
+from fpdf.fpdf import FPDF
 import streamlit as st
 from helper import get_summary, load_model, to_dataframe, data_preprocessing, get_prediction
 
@@ -5,13 +6,13 @@ st.set_page_config(layout="wide")
 
 
 def main():  # main function
-    st.title('Breast Cancer Prediction Using Random Forest Algorithm')
+    st.title('Breast Cancer Prediction Using KNN-SMOTE Algorithms')
 
     # load the trained model
-    classifier = load_model('rf_bsm_final_model.pkl')
+    classifier = load_model('KNN_bsm_classifier.pkl')
 
     # load the scaler
-    bsm_scaler = load_model('bsm_scaler.pkl')
+    bsm_scaler = load_model('smote_scaler.pkl')
 
     # input the data
     col1, col2, col3 = st.columns([1, 1, 1])
@@ -43,7 +44,7 @@ def main():  # main function
         data_prep = data_preprocessing(cancer_data, bsm_scaler)
 
         # get prediction result
-        result = get_prediction(data_prep, classifier)
+        result, recommendation = get_prediction(data_prep, classifier)
 
         # show the data summary and the predicted result
         summary, predicted = st.columns([1, 2])
@@ -59,6 +60,7 @@ def main():  # main function
 
             # show the predicted result
             st.write(f'Predicted Cancer Type : **{result}**')
+            st.write(f'Recommendation        : **{recommendation}**')
 
 
 if __name__ == '__main__':

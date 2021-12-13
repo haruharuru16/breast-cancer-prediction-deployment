@@ -57,10 +57,12 @@ def get_prediction(data_prep, classifier):
 
     if pred_result == 0:
         result = 'Benign'
+        recommendation = '-'
     else:
         result = 'Malignant'
+        recommendation = 'Please contact doctors immediately'
 
-    return result
+    return result, recommendation
 
 
 def get_summary(data):
