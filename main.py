@@ -1,4 +1,3 @@
-from fpdf.fpdf import FPDF
 import streamlit as st
 from helper import get_summary, load_model, to_dataframe, data_preprocessing, get_prediction
 
